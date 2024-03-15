@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .right-list li {
-    margin-bottom: 0.75em;
+    margin-bottom: 0.4em;
 }
 
 
@@ -144,7 +144,7 @@ footer {
 
 p {
     line-height: 1.5em;
-    margin-top: 0.5em;
+    margin-top: 0.3em;
     font-size: 1.1em;
 }
 
@@ -193,9 +193,37 @@ progress::-moz-progress-value {
     text-align: center;
 }
 
+
+
+
 .weixin img{
     width: 12.5em;
 }
+
+
+
+.column {
+    width: 33.33%;
+    float: left;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.content {
+    text-align: center;
+}
+.content img {
+    max-width: 60%;
+    height: auto;
+}
+.content p {
+    line-height: 1em;
+    margin-top: 0em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+
+
 
 .left-label {
     display: inline-block;
@@ -244,7 +272,7 @@ progress::-moz-progress-value {
     min-height: 100%;
     padding-left: 4.2em;
     padding-right: 5em;
-    padding-top: 3em;
+    padding-top: 1.5em;
     /* padding-bottom: 4em; */
 
 }
