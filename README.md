@@ -1,73 +1,108 @@
-# 利用Github Pages搭建个人在线简历
+# al-folio
 
-----
+[![build status](https://travis-ci.org/alshedivat/al-folio.svg?branch=master)](https://travis-ci.org/alshedivat/al-folio)
+[![demo](https://img.shields.io/badge/theme-demo-brightgreen.svg)](https://alshedivat.github.io/al-folio/)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/alshedivat/al-folio/blob/master/LICENSE)
+[![gitter](https://badges.gitter.im/alshedivat/al-folio.svg)](https://gitter.im/alshedivat/al-folio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-#### 什么是 Github Pages？
+A simple and clean [Jekyll](https://jekyllrb.com/) theme for academics.
 
-> Github Pages 是 Github 的静态页面托管服务。它设计的初衷是为了用户能够直接通过 Github 仓库来托管用户个人、组织或是项目的专属页面。参考：https://help.github.com/articles/what-is-github-pages/
+[![Screenshot](assets/img/full-screenshot.png)](https://alshedivat.github.io/al-folio/)
 
-可以说相当于一个可直接用 git 管理内容的静态服务器，有许多人会用它来托管自己的个人博客（利用 Jekyll、Pelican 这一类静态页面生成工具）或是在这上面发布自己的 HTML5 小游戏。当然这么好的东西也是有限制的。
+Originally, **al-folio** was based on the [\*folio theme](https://github.com/bogoli/-folio) (published by [Lia Bogoev](http://liabogoev.com) and under the MIT license).
+Since then, it got a full re-write of the styles and many additional cool features.
+The emphasis is on whitespace, transparency, and academic usage: [theme demo](https://alshedivat.github.io/al-folio/).
 
+## Getting started
 
-**Github Pages 的限制**：
+For more about how to use Jekyll, check out [this tutorial](https://www.taniarascia.com/make-a-static-website-with-jekyll/).
+Why Jekyll? Read this [blog post](https://karpathy.github.io/2014/07/01/switching-to-jekyll/)!
 
-- 仓库存储的所有文件不能超过 1 GB
+### Installation
 
-- 页面的带宽限制是低于每月 100 GB 或是每月 100,000 次请求。
+Assuming you have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](https://bundler.io/) installed on your system (*hint: for ease of managing ruby gems, consider using [rbenv](https://github.com/rbenv/rbenv)*), first fork the theme from `github.com:alshedivat/al-folio` to `github.com:<your-username>/<your-repo-name>` and do the following:
 
-- 每小时最多只能部署 10 个静态网站。
-
-对于发布自己的简历或是部署自己的博客的这一类需求我想是不用担心这些限制的，如果真的不小心超了，Github 那边不会采取什么强制措施，而是会发一份邮件提醒你应该找一个更适合你的托管对象的服务。
-
-
-
-#### Quick Start
-
-##### 1. 导入仓库
-
-> 点击github头像旁边的 "+" 号 选择 Import repository克隆地址填 https://github.com/DilemmaVi/resume 项目名填 resume
-
-
-##### 2. 编辑简历文件
-
-将代码下载到本地
-
-```
-git clone https://github.com/你的用户名/resume.git
+```bash
+$ git clone git@github.com:<your-username>/<your-repo-name>.git
+$ cd <your-repo-name>
+$ bundle install
+$ bundle exec jekyll serve
 ```
 
-a. 用浏览器打开index.html文件，你会发现这份模板是可编辑的，所有的文字栏目都是可以随意编辑的,点击图片可以通过图片的url地址替换。
+Now, feel free to customize the theme however you like (don't forget to change the name!).
+After you are done, **commit** your final changes.
+Now, you can deploy your website to [GitHub Pages](https://pages.github.com/) by running the deploy script:
 
-b. 编辑完自己的简历以后，就把修改后的代码复制下来，替换掉原index.html里的代码。
-
-c. Firefox 下：打开查看器->复制 html 标签的外部 HTML
-
-d. 然后将index.html中的 html 标签的所有内容（包括 html 标签）替换掉即可。
-
-不喜欢这样子的可以修改static/js下的script.js文件，操作非常简单，删除该文件下的所有内容，然后加上下面这一句。
+```bash
+$ ./bin/deploy [--user]
 ```
-$(document).ready(function($){
-    $("*").removeAttr('contenteditable');        
-})
-```
-这一句是为了去掉页面上所有元素的可编辑属性。
+By default, the script uses the `master` branch for the source code and deploys the webpage to `gh-pages`.
+The optional flag `--user` tells it to deploy to `master` and use `source` for the source code instead.
+Using `master` for deployment is a convention for [user and organization pages](https://help.github.com/articles/user-organization-and-project-pages/).
 
-最后可以在 CSS 文件内再改改样式。
-
-最后就是提交代码
+**Note:** when deploying your user or organization page, make sure the `_config.yml` has `url` and `baseurl` fields as follows.
 
 ```
-git add .
-
-git commit -m "update info"
-
-git push origin master
+url: # should be empty
+baseurl:  # should be empty
 ```
 
-##### 3. 部署github pages
+### Usage
 
-a. 打开github上的项目，点击右上角的setting
+Note that `_pages/about.md` is built to index.html in the published site. There is therefore no need to have a separate index page for the project. If an index page does exist in the root directory then this will prevent `_pages/about.md` from being added to the built site.
 
-b. 往下拉找到GitHub Pages，source选择master branch，然后点击save
+## Features
 
-> 现在你可以访问https://你的用户名.github.io/resume  这个地址了，恭喜，简历页面已成功部署在了 Github Pages 上。
+#### Ergonomic Publications
+
+Your publications page is generated automatically from your BibTex bibliography.
+Simply edit `_bibliography/papers.bib`.
+You can also add new `*.bib` files and customize the look of your publications however you like by editing `_pages/publications.md`.
+
+Keep meta-information about your co-authors in `_data/coauthors.yml` and Jekyll will insert links to their webpages automatically.
+
+#### Collections
+This Jekyll theme implements collections to let you break up your work into categories.
+The example is divided into news and projects, but easily revamp this into apps, short stories, courses, or whatever your creative work is.
+
+> To do this, edit the collections in the `_config.yml` file, create a corresponding folder, and create a landing page for your collection, similar to `_pages/projects.md`.
+
+Two different layouts are included: the blog layout, for a list of detailed descriptive list of entries, and the projects layout.
+The projects layout overlays a descriptive hoverover on a background image.
+If no image is provided, the square is auto-filled with the chosen theme color.
+Thumbnail sizing is not necessary, as the grid crops images perfectly.
+
+#### Theming
+Six beautiful theme colors have been selected to choose from.
+The default is purple, but quickly change it by editing `$theme-color` variable in the `_sass/variables.scss` file (line 72).
+Other color variables are listed there, as well.
+
+#### Photos
+Photo formatting is made simple using rows of a 3-column system.
+Make photos 1/3, 2/3, or full width.
+Easily create beautiful grids within your blog posts and projects pages:
+
+<p align="center">
+  <a href="https://alshedivat.github.io/al-folio/projects/1_project/">
+    <img src="assets/img/photos-screenshot.png" width="75%">
+  </a>
+</p>
+
+#### Code Highlighting
+This theme implements Jekyll's built in code syntax highlighting with Pygments.
+Just use the liquid tags `{% highlight python %}` and `{% endhighlight %}` to delineate your code:
+
+<p align="center">
+  <a href="https://alshedivat.github.io/al-folio/blog/2015/code/">
+    <img src="assets/img/code-screenshot.png" width="75%">
+  </a>
+</p>
+
+## Contributing
+
+Feel free to contribute new features and theme improvements by sending a pull request.
+Style improvements and bug fixes are especially welcome.
+
+## License
+
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
