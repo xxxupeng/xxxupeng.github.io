@@ -481,11 +481,12 @@ figcaption { font-size: 0.875rem; }
 
 .blankbox { background: #00369f; }
 
-.img_row { height: 200px; width: 100%; overflow: hidden; box-sizing: border-box; }
+.img_row { height: auto; width: 100%; overflow: hidden; box-sizing: border-box; display: flex; align-items: center; flex-wrap: wrap; }
 
 .text_row { width: 100%; vertical-align: middle; }
 
-.col { width: 100%; height: 100%; object-fit: cover; box-sizing: border-box; padding: 5px; }
+.col { width: 100%; height: auto; object-fit: contain; box-sizing: border-box; padding: 5px; }
+.img_row .left { float: none; }
 
 .profile_img { width: 20.0%; }
 
