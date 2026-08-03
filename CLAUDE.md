@@ -89,7 +89,5 @@ Not urgent, but don't be surprised by them:
 
 - `index.html:12` links `./assets/img/favicon.ico`, which does not exist — a guaranteed 404.
 - The `<meta name="description">` still describes the al-folio theme, not Peng Xu.
-- The contact email is inconsistent: the header and commented-out social block use
-  `xxupeng@zju.edu.cn` (two x's) while the body text uses `xxxupeng@zju.edu.cn` (three).
 - Google Analytics is initialized with the placeholder ID `UA-XXXXXXXXX`, so it collects
   nothing.
