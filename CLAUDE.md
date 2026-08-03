@@ -83,11 +83,11 @@ Per-paper assets (thumbnails, posters, slides, demo videos) live in `projects/<v
 e.g. `projects/iccv2025/`. Add a directory per paper and reference the files with relative
 `./projects/...` paths.
 
-## Known rough edges
+## Analytics
 
-Not urgent, but don't be surprised by them:
+There is no analytics or tracking on this page. A dead Universal Analytics snippet with a
+placeholder ID was removed; if tracking is ever wanted, add GA4 `gtag.js` rather than
+reviving `analytics.js`, which Google stopped processing data for in July 2023.
 
-- `index.html:12` links `./assets/img/favicon.ico`, which does not exist — a guaranteed 404.
-- The `<meta name="description">` still describes the al-folio theme, not Peng Xu.
-- Google Analytics is initialized with the placeholder ID `UA-XXXXXXXXX`, so it collects
-  nothing.
+There is also no favicon, by choice — the stale `favicon.ico` link was removed rather than
+pointing at a file that never existed. Adding one means creating the asset first.
